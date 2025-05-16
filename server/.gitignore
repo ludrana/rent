@@ -1,3 +1,4 @@
 .env
 specification/
 node_modules/
+static/
