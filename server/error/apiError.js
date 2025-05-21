@@ -12,7 +12,9 @@ export default class ApiError extends Error {
     static forbidden(message) {
         return new ApiError(403, message);
     }
-
+    static notFound(message) {
+        return new ApiError(404, message);
+    }
 
     static unauthorized(message) {
         return new ApiError(401, message);

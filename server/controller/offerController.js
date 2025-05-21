@@ -10,6 +10,22 @@ async function getAllOffers(req, res, next) {
         res.send(adapted);
     } catch (error) {
         console.error('Не удалось получить список предложений:', error);
+        return next(ApiError.internal('womp womp'));
+    }
+}
+
+async function getFavoriteOffers(req, res, next) {
+    try {
+        const favoriteOffers = await Offer.findAll({
+            where: {
+                isFavorite: true
+            }
+        });
+
+        res.send(favoriteOffers.map(el => adaptOfferToClient(el)));
+    } catch (error) {
+        console.error('Error fetching favorite offers:', error);
+        return next(ApiError.internal('womp womp'));
     }
 }
 
@@ -100,4 +116,22 @@ export async function createOffer(req, res, next) {
     }
 }
 
-export {getAllOffers};
+const toggleFavorite = async (req, res, next) => {
+    try {
+        const { offerId, status } = req.params;
+
+        const offer = await Offer.findByPk(offerId);
+        if (!offer) {
+            return next(ApiError.notFound('Предложение не найдено'));
+        }
+
+        offer.isFavorite = status === '1';
+        await offer.save();
+
+        res.json(offer);
+    } catch (error) {
+        next(ApiError.internal('Ошибка при обновлении статуса избранного'));
+    }
+};
+
+export {getAllOffers, getFavoriteOffers, toggleFavorite};
