@@ -14,3 +14,5 @@ export const AuthorizationStatus = {
     NoAuth: 'NO_AUTH',
     Unknown: 'UNKNOWN'
 };
+
+export const STARS = 5;

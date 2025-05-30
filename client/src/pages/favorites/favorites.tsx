@@ -1,7 +1,13 @@
 import {FavoriteCard} from "../../components/favorite-card/favorite-card";
 import {Logo} from "../../components/logo/logo";
+import {OffersList} from "../../types/offer";
+import FavoritesCardList from "../../components/favorites-card-list/favorites-card-list";
 
-function Favorites() {
+type FavProps = {
+    offers: OffersList[]
+}
+
+function Favorites({offers}: FavProps) {
     return (<div className="page">
         <header className="header">
             <div className="container">
@@ -44,8 +50,7 @@ function Favorites() {
                                 </div>
                             </div>
                             <div className="favorites__places">
-                                <FavoriteCard/>
-                                <FavoriteCard/>
+                                <FavoritesCardList offersList={offers}/>
                             </div>
                         </li>
 
@@ -58,7 +63,7 @@ function Favorites() {
                                 </div>
                             </div>
                             <div className="favorites__places">
-                                <FavoriteCard/>
+                                <FavoritesCardList offersList={offers}/>
                             </div>
                         </li>
                     </ul>

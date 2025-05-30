@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const";
+import {AppRoute, STARS} from "../../const";
 
 type CitiesCardProps = {
     id: string;
@@ -50,8 +50,8 @@ function CitiesCard({ id, title, type, price, previewImage, isPremium, rating }:
                 </div>
                 <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                        <span style={{width: "80%"}}></span>
-                        <span className="visually-hidden">{rating}</span>
+                        <span style={{width: `${Math.round(rating)*100/STARS}%`}}></span>
+                        <span className="visually-hidden">Rating</span>
                     </div>
                 </div>
                 <h2 className="place-card__name">

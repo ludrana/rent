@@ -4,6 +4,7 @@ import {FullOffer} from "../../types/offer";
 import ErrorPage from "../error-page/error-page";
 import {useParams} from "react-router-dom";
 import CommentForm from "../../components/comment-form/comment-form";
+import {STARS} from "../../const";
 
 type OfferProps = {
     offers: FullOffer[]
@@ -77,7 +78,7 @@ function Offer({offers}: OfferProps) {
                             </div>
                             <div className="offer__rating rating">
                                 <div className="offer__stars rating__stars">
-                                    <span style={{width: "80%"}}></span>
+                                    <span style={{width: `${Math.round(offer.rating)*100/STARS}%`}}></span>
                                     <span className="visually-hidden">Rating</span>
                                 </div>
                                 <span className="offer__rating-value rating__value">{offer.rating}</span>
