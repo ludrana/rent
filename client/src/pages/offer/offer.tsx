@@ -5,6 +5,7 @@ import ErrorPage from "../error-page/error-page";
 import {useParams} from "react-router-dom";
 import CommentForm from "../../components/comment-form/comment-form";
 import {STARS} from "../../const";
+import Map from "../../components/map/map";
 
 type OfferProps = {
     offers: FullOffer[]
@@ -166,7 +167,9 @@ function Offer({offers}: OfferProps) {
                             </section>
                         </div>
                     </div>
-                    <section className="offer__map map"></section>
+                    <section className="offer__map map">
+                        <Map offers={offer}/>
+                    </section>
                 </section>
                 <div className="container">
                     <section className="near-places places">

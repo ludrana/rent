@@ -8,6 +8,7 @@ import {JSX} from "react";
 import {AppRoute, AuthorizationStatus} from "../../const";
 import {PrivateRoute} from "../private-route/private-route";
 import {FullOffer, OffersList} from "../../types/offer";
+import 'leaflet/dist/leaflet.css';
 
 type AppMainPageProps = {
     rentalOffersCount: number
@@ -29,7 +30,7 @@ function App({rentalOffersCount, offers, offlist}: AppMainPageProps): JSX.Elemen
                         <PrivateRoute
                             authorizationStatus={AuthorizationStatus.NoAuth}
                         >
-                            <Favorites/>
+                            <Favorites offers={offlist}/>
                         </PrivateRoute>
                     }
                 />

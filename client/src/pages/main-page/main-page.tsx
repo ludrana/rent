@@ -3,6 +3,8 @@ import {Logo} from "../../components/logo/logo";
 import {CitiesCardList} from "../../components/cities-card-list/cities-card-list";
 import {offers} from "../../mock/offer";
 import {OffersList} from "../../types/offer";
+import Map from "../../components/map/map";
+import {offersList} from "../../mock/offer-list";
 
 type MainPageProps = {
     rentalOffersCount: number
@@ -102,7 +104,9 @@ function MainPage({rentalOffersCount, offerList}: MainPageProps) {
                             </div>
                         </section>
                         <div className="cities__right-section">
-                            <section className="cities__map map"></section>
+                            <section className="cities__map map">
+                                <Map offers={offersList}/>
+                            </section>
                         </div>
                     </div>
                 </div>
